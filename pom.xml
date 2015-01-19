@@ -43,7 +43,10 @@
   </scm>
 
   <modules>
+    <module>saml-gatein-tomcat-plugin</module>
+    <module>saml2-plugin</module>
     <module>packaging</module>
+    <module>packaging-tomcat</module>
   </modules>
 
   <properties>
@@ -54,23 +57,57 @@
     <exogtn.version>4.2.x-PLF-sso-SNAPSHOT</exogtn.version>
     <org.gatein.sso.version>1.3.1.Final</org.gatein.sso.version>
     <version.picketlink.fed>2.1.4.Final</version.picketlink.fed>
+    <version.picketbox>4.0.19.SP2</version.picketbox>
+    <version.org.exoplatform.core>2.5.0-GA</version.org.exoplatform.core>
+    <org.gatein.wci.version>2.4.2.Final</org.gatein.wci.version>
   </properties>
 
   <dependencyManagement>
     <dependencies>
       <dependency>
+        <groupId>org.exoplatform.addons.sso</groupId>
+        <artifactId>saml-gatein-tomcat-plugin</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.exoplatform.addons.sso</groupId>
+        <artifactId>saml2-plugin</artifactId>
+        <version>${project.version}</version>
+        <type>zip</type>
+      </dependency>
+      <dependency>
         <groupId>org.gatein.sso</groupId>
         <artifactId>sso-auth-callback</artifactId>
         <version>${org.gatein.sso.version}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>org.jboss.security</groupId>
+            <artifactId>jboss-negotiation-spnego</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.jboss.web</groupId>
+            <artifactId>jbossweb</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
       <dependency>
         <groupId>org.gatein.sso</groupId>
         <artifactId>sso-agent</artifactId>
         <version>${org.gatein.sso.version}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>org.gatein.sso</groupId>
+            <artifactId>sso-auth-callback</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.jboss.security</groupId>
+            <artifactId>jboss-negotiation-spnego</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
       <dependency>
         <groupId>org.gatein.sso</groupId>
-        <artifactId>sso-integration</artifactId>
+        <artifactId>sso-saml-plugin</artifactId>
         <version>${org.gatein.sso.version}</version>
       </dependency>
       <dependency>
@@ -90,6 +127,21 @@
         <version>${exogtn.version}</version>
       </dependency>
       <dependency>
+        <groupId>org.gatein.portal</groupId>
+        <artifactId>exo.portal.component.web.sso.saml</artifactId>
+        <version>${exogtn.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.exoplatform.core</groupId>
+        <artifactId>exo.core.component.security.core</artifactId>
+        <version>${version.org.exoplatform.core}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.picketbox</groupId>
+        <artifactId>picketbox</artifactId>
+        <version>${version.picketbox}</version>
+      </dependency>
+      <dependency>
         <groupId>org.picketlink</groupId>
         <artifactId>picketlink-core</artifactId>
         <version>${version.picketlink.fed}</version>
@@ -99,16 +151,36 @@
         <artifactId>picketlink-jbas7</artifactId>
         <version>${version.picketlink.fed}</version>
       </dependency>
+      <dependency>
+        <groupId>org.picketlink.distribution</groupId>
+        <artifactId>picketlink-tomcat7</artifactId>
+        <version>${version.picketlink.fed}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.gatein.wci</groupId>
+        <artifactId>wci-wci</artifactId>
+        <version>${org.gatein.wci.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>commons-logging</groupId>
+        <artifactId>commons-logging</artifactId>
+        <version>1.2</version>
+      </dependency>
+      <dependency>
+        <groupId>log4j</groupId>
+        <artifactId>log4j</artifactId>
+        <version>1.2.17</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.httpcomponents</groupId>
+        <artifactId>httpcore</artifactId>
+        <version>4.3.1</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.httpcomponents</groupId>
+        <artifactId>httpclient</artifactId>
+        <version>4.3.1</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
-  <build>
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-dependency-plugin</artifactId>
-        </plugin>
-      </plugins>
-    </pluginManagement>
-  </build>
 </project>

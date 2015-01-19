@@ -28,7 +28,7 @@
     <artifactId>saml2-addon-parent</artifactId>
     <version>4.2.x-SNAPSHOT</version>
   </parent>
-  <artifactId>saml2-addon-packaging</artifactId>
+  <artifactId>saml2-addon-tomcat-packaging</artifactId>
   <packaging>pom</packaging>
   <name>SAML2 add-on Packaging</name>
   <description>The SAML2 add-on packaging</description>
@@ -57,6 +57,22 @@
     <dependency>
       <groupId>org.gatein.portal</groupId>
       <artifactId>exo.portal.component.web.sso.saml</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.picketlink</groupId>
+      <artifactId>picketlink-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.picketlink.distribution</groupId>
+      <artifactId>picketlink-tomcat7</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.picketbox</groupId>
+      <artifactId>picketbox</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.exoplatform.addons.sso</groupId>
+      <artifactId>saml-gatein-tomcat-plugin</artifactId>
     </dependency>
     <dependency>
       <groupId>org.exoplatform.addons.sso</groupId>

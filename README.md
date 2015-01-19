@@ -83,7 +83,7 @@ This package is used to run `idp-sig.war`.
 - copy `$PLATFORM_SP_HOME/saml-plugin/idp-sig.war` to `$PLATFORM_IDP_HOME/standalone/deployments`
 - Create an empty file named `idp-sig.war.dodeploy` under `$PLATFORM_IDP_HOME/standalone/deployments`
 - Remove `$PLATFORM_IDP_HOME/standalone/deployments/platform.ear.dodeploy`, so that `platform.ear` will not be deployed
-- Copy folder `$PLATFORM_SP_HOME/saml-plugin/idp-sig-module/module` into `$PLATFORM_IDP_HOME`
+- Copy folder `$PLATFORM_SP_HOME/saml-plugin/idp-sig-module/modules` into `$PLATFORM_IDP_HOME`
 - Add the following security domain to the `$PLATFORM_IDP_HOME/standalone/configuration/standalone.xml` file:
 ```xml
 <security-domain name="idp" cache-type="default">
